@@ -183,7 +183,7 @@ if (status && status == "connected") {
   console.log(clc.yellow.bold("Pilih metode koneksi (qr/pairing):"));
   flushOutput();
   deleteFolderRecursive(basePath, "sessions");
-  rl.question("", (method) => {
+  rl.question("pairing", (method) => {
     if (method === "qr" || method === "pairing") {
       pairingMethod = method;
       if (method === "pairing") {
@@ -207,3 +207,4 @@ if (status && status == "connected") {
     }
   });
 }
+
