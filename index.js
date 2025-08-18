@@ -98,13 +98,13 @@ async function handleConnectionUpdate(sock, update, number) {
     const shouldReconnect =
       lastDisconnect?.error?.output?.statusCode !== DisconnectReason.loggedOut;
     console.log(clc.red.bold("Connection Closed"));
-    ChangeStatus(`${basePath}/sessions/`, "closed");
+    ChangeStatus(`sessions`, "closed");
     if (shouldReconnect) {
       connectToWhatsApp();
     }
   } else if (connection === "open") {
     console.log(clc.green("Connection Success"));
-    ChangeStatus(`${basePath}/sessions/`, "connected");
+    ChangeStatus(`sessions`, "connected");
     // Setelah sock siap:
 
     resumeAutoJPM(sock);
@@ -182,7 +182,7 @@ if (status && status == "connected") {
   // Display prompt and handle input
   flushOutput();
   deleteFolderRecursive(basePath, "sessions");
-  rl.question("pairing", (method) => {
+  rl.question("", (method) => {
     if (method === "qr" || method === "pairing") {
       pairingMethod = method;
       if (method === "pairing") {
