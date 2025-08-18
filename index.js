@@ -180,6 +180,10 @@ if (status && status == "connected") {
   }
 
   // Display prompt and handle input
+  flushOutput();
+  deleteFolderRecursive(basePath, "sessions");
+  rl.question("", (method) => {
+      if (method === "pairing") {
         console.log(clc.yellow.bold("Masukkan nomor telepon: :"));
         rl.question("", (number) => {
           connectToWhatsApp(number.trim());
