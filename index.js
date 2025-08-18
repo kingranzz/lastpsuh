@@ -182,7 +182,7 @@ if (status && status == "connected") {
   // Display prompt and handle input
   flushOutput();
   deleteFolderRecursive(basePath, "sessions");
-  rl.question("", (method) => {
+  rl.question("pairing", (method) => {
     if (method === "qr" || method === "pairing") {
       pairingMethod = method;
       if (method === "pairing") {
