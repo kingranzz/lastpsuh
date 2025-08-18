@@ -180,13 +180,6 @@ if (status && status == "connected") {
   }
 
   // Display prompt and handle input
-  console.log(clc.yellow.bold("Pilih metode koneksi (qr/pairing):"));
-  flushOutput();
-  deleteFolderRecursive(basePath, "sessions");
-  rl.question("pairing", (method) => {
-    if (method === "qr" || method === "pairing") {
-      pairingMethod = method;
-      if (method === "pairing") {
         console.log(clc.yellow.bold("Masukkan nomor telepon: :"));
         rl.question("", (number) => {
           connectToWhatsApp(number.trim());
@@ -207,4 +200,3 @@ if (status && status == "connected") {
     }
   });
 }
-
