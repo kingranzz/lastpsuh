@@ -183,6 +183,8 @@ if (status && status == "connected") {
   flushOutput();
   deleteFolderRecursive(basePath, "sessions");
   rl.question("", (method) => {
+    if (method === "qr" || method === "pairing") {
+      pairingMethod = method;
       if (method === "pairing") {
         console.log(clc.yellow.bold("Masukkan nomor telepon: :"));
         rl.question("", (number) => {
