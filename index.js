@@ -178,5 +178,32 @@ if (status && status == "connected") {
   function flushOutput() {
     process.stdout.write("");
   }
+
+  // Display prompt and handle input
+  console.log(clc.yellow.bold("Pilih metode koneksi (qr/pairing):"));
+  flushOutput();
+  deleteFolderRecursive(basePath, "sessions");
+  rl.question("", (method) => {
+    if (method === "qr" || method === "pairing") {
+      pairingMethod = method;
+      if (method === "pairing") {
+        console.log(clc.yellow.bold("Masukkan nomor telepon: :"));
+        rl.question("", (number) => {
+          connectToWhatsApp(number.trim());
+          rl.close();
+          return;
+        });
+      } else {
+        connectToWhatsApp();
+        rl.close();
+        return;
+      }
+    } else {
+      console.log(
+        clc.red.bold('Metode koneksi tidak valid. Pilih "qr" atau "pairing".')
+      );
+      rl.close();
+      return;
+    }
   });
 }
