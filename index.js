@@ -178,23 +178,5 @@ if (status && status == "connected") {
   function flushOutput() {
     process.stdout.write("");
   }
-
-  // Display prompt and handle input
-          connectToWhatsApp(number.trim());
-          rl.close();
-          return;
-        });
-      } else {
-        connectToWhatsApp();
-        rl.close();
-        return;
-      }
-    } else {
-      console.log(
-        clc.red.bold('Metode koneksi tidak valid. Pilih "qr" atau "pairing".')
-      );
-      rl.close();
-      return;
-    }
   });
 }
